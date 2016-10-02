@@ -10,6 +10,20 @@ def test_multiple_arguments(a, b, c):
     assert a * b == c
 
 
+@pytest.fixture
+def myfixture():
+    return 42
+
+
+@pytest.auto_parametrize([
+    (7, 50, 99),
+    (0, 0, 42),
+    (58, -100, 0),
+])
+def test_multiple_arguments_plus_fixture(x, y, z, myfixture):
+    assert x + y + myfixture == z
+
+
 @pytest.auto_parametrize([1, 2, 3])
 def test_single_argument(x):
     assert x in (1, 2, 3)
