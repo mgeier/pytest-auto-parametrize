@@ -7,6 +7,12 @@ __version__ = '0.0.0'
 
 
 def auto_parametrize(argvalues, *args, **kwargs):
+    """Deduce argument names from function signature.
+
+    The argument values correspond to the function arguments in the
+    given order.  Any additional argument names are treated as fixtures.
+
+    """
     def decorator(func):
         try:
             argvalue = argvalues[0]
@@ -26,4 +32,5 @@ def auto_parametrize(argvalues, *args, **kwargs):
 
 
 def pytest_namespace():
+    """Register pytest plugin."""
     return {'auto_parametrize': auto_parametrize}
