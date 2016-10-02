@@ -3,6 +3,9 @@ import pytest
 from _pytest.mark import extract_argvalue
 
 
+__version__ = '0.0.0'
+
+
 def auto_parametrize(argvalues, *args, **kwargs):
     def decorator(func):
         try:
