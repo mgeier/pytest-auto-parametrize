@@ -75,4 +75,6 @@ Limitations
 
 Unlike ``@pytest.mark.parametrize(...)`` the decorator
 ``@pytest.auto_parametrize(...)`` cannot be used multiple times for the same
-test function.
+test function.  It can be used together with one or multiple instances of
+``@pytest.mark.parametrize(...)``, though, as long as the "auto" arguments are
+in the beginning of the argument list.

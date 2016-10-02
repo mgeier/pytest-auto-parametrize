@@ -10,7 +10,8 @@ def auto_parametrize(argvalues, *args, **kwargs):
     """Deduce argument names from function signature.
 
     The argument values correspond to the function arguments in the
-    given order.  Any additional argument names are treated as fixtures.
+    given order.  Any trailing argument names can be fixtures or
+    arguments from ``@pytest.mark.parametrize(...)`` decorators.
 
     """
     def decorator(func):

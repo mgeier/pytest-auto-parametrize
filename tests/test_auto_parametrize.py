@@ -32,3 +32,16 @@ def test_single_argument(x):
 @pytest.auto_parametrize([pytest.mark.xfail('zero'), 'one', 'two'])
 def test_single_string_argument(x):
     assert x in ('one', 'two')
+
+
+@pytest.mark.parametrize('x', [0, 1, 2])
+@pytest.auto_parametrize([
+    (3, 4),
+    (5, 6),
+])
+@pytest.mark.parametrize('y', [7, 8, 9])
+def test_parametrize_mixed_with_auto_parametrize(a, b, x, y):
+    assert a in (3, 5)
+    assert b in (4, 6)
+    assert x in (0, 1, 2)
+    assert y in (7, 8, 9)
