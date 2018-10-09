@@ -1,6 +1,6 @@
 import inspect
 import pytest
-from _pytest.mark import extract_argvalue
+from _pytest.mark import ParameterSet
 
 __version__ = '0.1.0'
 
@@ -20,7 +20,7 @@ def auto_parametrize(argvalues, *args, **kwargs):
             raise ValueError('argvalues must be non-empty')
         except TypeError:
             raise TypeError('argvalues must be a sequence')
-        argvalue, _ = extract_argvalue(argvalue)
+        argvalue = ParameterSet.extract_from(argvalue).values
         argspec = inspect.getargspec(func)[0]
         if isinstance(argvalue, (list, tuple)):
             argnames = argspec[:len(argvalue)]
